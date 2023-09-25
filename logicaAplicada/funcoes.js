@@ -3,15 +3,12 @@ import baseDadosUsuarios from "../dados/dados.js";
 //retorna toda a lista de dados
 export const retornaListaDados = () => baseDadosUsuarios;
 
-
 // busca o id dos usuario
 export const buscausuariosId  = (id) => {
     const filtraId = parseInt(id);
     const Id = baseDadosUsuarios.find(item => item.id === filtraId);
     return Id;
 };
-
-
 
 //cadastra novos usuarios
 export const cadatraUsuario = (nome, senha) => {
@@ -29,9 +26,6 @@ export const cadatraUsuario = (nome, senha) => {
     return novoUsuario;
 };
 
-
-
-
 //atualizar todos os usuarios
 export const atualizarUsuarioBaseDados = (id, nome, senha) => {
     const usuarioIndex = baseDadosUsuarios.findIndex(item => item.id === id);
@@ -44,7 +38,6 @@ export const atualizarUsuarioBaseDados = (id, nome, senha) => {
       return false;
     };
 };
-
 
 //atualiza um dado do usuario por vez  
 export const atualizarUmdadosBaseDados = (id, nome, senha) => {
@@ -66,7 +59,6 @@ export const atualizarUmdadosBaseDados = (id, nome, senha) => {
 };
 
 // remover usuarios da lista
-
 export const removeUsuarios = (id) => {
     const Id = parseInt(id)
     const removerId = baseDadosUsuarios.findIndex(item => item.id === Id);
