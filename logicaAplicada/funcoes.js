@@ -64,3 +64,15 @@ export const atualizarUmdadosBaseDados = (id, nome, senha) => {
 
     return usuario;
 };
+
+// remover usuarios da lista
+
+export const removeUsuarios = (id) => {
+    const Id = parseInt(id)
+    const removerId = baseDadosUsuarios.findIndex(item => item.id === Id);
+
+    if(removerId !== -1){
+        const remove = baseDadosUsuarios.splice(removerId, 1);
+        return remove;
+    };
+};

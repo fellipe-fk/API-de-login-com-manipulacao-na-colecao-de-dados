@@ -1,5 +1,5 @@
 import express from 'express';
-import { retornaListaDados, buscausuariosId, cadatraUsuario, atualizarUsuarioBaseDados,atualizarUmdadosBaseDados } from './logicaAplicada/funcoes.js';
+import { retornaListaDados, buscausuariosId, cadatraUsuario, atualizarUsuarioBaseDados,atualizarUmdadosBaseDados,removeUsuarios } from './logicaAplicada/funcoes.js';
 import { validarCamposNomeSenha } from './validaErro/validaErro.js';
 const app = express();
 const port = 3000;
@@ -82,6 +82,23 @@ app.patch('/login/:id', (req, res) => {
     } else {
       res.status(404).json({ erro: 'Usuário não encontrado' });
     };
+});
+
+//remover usuario da lista
+
+app.delete('/login/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+
+  if(isNaN(id)){
+    res.status(404).json({erro: 'Id invalido'});
+  };
+
+  const remove = removeUsuarios(id);
+  if(remove){
+    res.json({mensagem:`Usuário com ID ${id} foi excluído` });
+  }else{
+    res.status(404).json({erro: 'Id nao encontrado'});
+  }
 });
 
 
